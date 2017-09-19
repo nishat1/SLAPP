@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Home" />
+        <item
+            android:id="@+id/calendarOption"
+            android:icon="@drawable/ic_event_available_black_48dp"
+            android:title="Sleep Calendar" />
+        <item
+            android:id="@+id/myCharts"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="My Charts" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Logout" />
+    </group>
+
+</menu>
