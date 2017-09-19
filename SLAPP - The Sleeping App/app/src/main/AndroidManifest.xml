@@ -27,7 +27,16 @@
         <activity
             android:name=".LandingMenu"
             android:label="@string/title_activity_landing_menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CalendarActivity"
+            android:label="@string/title_activity_calendar"
+            android:parentActivityName=".LandingMenu"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.nisha.lumohacks2017.LandingMenu" />
+        </activity>
     </application>
 
 </manifest>
