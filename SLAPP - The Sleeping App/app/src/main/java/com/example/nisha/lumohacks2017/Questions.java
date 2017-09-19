@@ -1,5 +1,6 @@
 package com.example.nisha.lumohacks2017;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class Questions extends AppCompatActivity {
 
     int MAX = 8;
@@ -39,6 +42,10 @@ public class Questions extends AppCompatActivity {
     int day = c.get(Calendar.DAY_OF_MONTH);
     int year = c.get(Calendar.YEAR);
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
