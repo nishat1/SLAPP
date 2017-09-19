@@ -49,7 +49,7 @@ public class LandingMenu extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ((CalendarView)findViewById(R.id.calendar)).setVisibility(View.GONE);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,21 +104,22 @@ public class LandingMenu extends AppCompatActivity
 
         if (id == R.id.home) {
             // Handle the camera action
-            ((CalendarView)findViewById(R.id.calendar)).setVisibility(View.GONE);
+
             ((FloatingActionButton)findViewById(R.id.add)).setVisibility(View.VISIBLE);
 
         } else if (id == R.id.calendarOption) {
-            ((CalendarView)findViewById(R.id.calendar)).setVisibility(View.VISIBLE);
+            Intent startCalendar = new Intent(this, CalendarActivity.class);
+            startActivity(startCalendar);
             ((FloatingActionButton)findViewById(R.id.add)).setVisibility(View.GONE);
 
         } else if (id == R.id.myCharts) {
-            ((CalendarView)findViewById(R.id.calendar)).setVisibility(View.GONE);
+
             ((FloatingActionButton)findViewById(R.id.add)).setVisibility(View.GONE);
             finish();
             startActivity(new Intent(getApplicationContext(), DailyActivity.class));
 
         } else if (id == R.id.logout) {
-            ((CalendarView)findViewById(R.id.calendar)).setVisibility(View.GONE);
+
             ((FloatingActionButton)findViewById(R.id.add)).setVisibility(View.GONE);
             FirebaseAuth.getInstance().signOut();
             finish();

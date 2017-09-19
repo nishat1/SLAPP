@@ -9,14 +9,7 @@
     tools:context="com.example.nisha.lumohacks2017.LandingMenu"
     tools:showIn="@layout/app_bar_landing_menu">
 
-    <CalendarView
-        android:id="@+id/calendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:foregroundGravity="center"
-        android:background="@color/colorPrimary"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="67dp" />
+
 
     <TextView
         android:id="@+id/textView2"
