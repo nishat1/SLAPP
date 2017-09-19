@@ -21,37 +21,38 @@ tools:context="com.example.nisha.lumohacks2017.LandingMenu">
 
     <TextClock
         android:id="@+id/textClock"
-        android:gravity="center"
+        android:gravity="top"
         android:textSize="50dp"
         android:textColor="#ffffff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/linearLayout"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="97dp" />
 
     <TextView
         android:id="@+id/randomGreeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textClock"
-        android:layout_alignLeft="@+id/textClock"
-        android:layout_alignRight="@+id/textClock"
-        android:layout_alignStart="@+id/textClock"
-        android:layout_below="@+id/linearLayout"
-        android:layout_marginTop="23dp"
         android:ems="10"
         android:textColor="@color/white"
         android:textAlignment="center"
-        android:text="Welcome Back" />
+        android:text="Welcome Back"
+        android:layout_below="@+id/textClock"
+        android:layout_marginTop="16dp"
+        android:layout_alignRight="@+id/textClock"
+        android:layout_alignEnd="@+id/textClock"
+        android:layout_alignLeft="@+id/textClock"
+        android:layout_alignStart="@+id/textClock" />
 
     <TextView
         android:id="@+id/nameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/randomGreeting"
         android:text="User's Name!"
         android:textColor="@color/white"
         android:textAlignment="center"
+        android:layout_below="@+id/randomGreeting"
         android:layout_alignRight="@+id/randomGreeting"
         android:layout_alignEnd="@+id/randomGreeting"
         android:layout_alignLeft="@+id/randomGreeting"
