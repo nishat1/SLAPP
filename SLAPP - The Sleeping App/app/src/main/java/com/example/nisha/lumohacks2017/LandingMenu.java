@@ -28,10 +28,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
+import org.w3c.dom.Text;
+
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class LandingMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    // global variables
+    private CalendarView calenderObject;
+    private FloatingActionButton floatingActionButton;
+    private TextView homeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +47,12 @@ public class LandingMenu extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Initialize objects
+        calenderObject = (CalendarView) findViewById(R.id.calendar);
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.add);
+        homeText = (TextView) findViewById(R.id.homeText);
+
+        // initialize drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -49,9 +62,12 @@ public class LandingMenu extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ((CalendarView)findViewById(R.id.calendar)).setVisibility(View.GONE);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add);
-        fab.setOnClickListener(new View.OnClickListener() {
+        // initialize home screen objects
+        calenderObject.setVisibility(View.GONE);
+        homeText.setVisibility(View.VISIBLE);
+        floatingActionButton.setVisibility(View.VISIBLE);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startQuestions(view);
@@ -60,10 +76,11 @@ public class LandingMenu extends AppCompatActivity
         });
     }
 
-   @Override
+    @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -103,36 +120,49 @@ public class LandingMenu extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.home) {
-            // Handle the camera action
-            ((CalendarView)findViewById(R.id.calendar)).setVisibility(View.GONE);
-            ((FloatingActionButton)findViewById(R.id.add)).setVisibility(View.VISIBLE);
+
+            // Clear everything but the home button
+            calenderObject.setVisibility(View.GONE);
+            floatingActionButton.setVisibility(View.VISIBLE);
+            homeText.setVisibility(View.VISIBLE);
 
         } else if (id == R.id.calendarOption) {
-            ((CalendarView)findViewById(R.id.calendar)).setVisibility(View.VISIBLE);
-            ((FloatingActionButton)findViewById(R.id.add)).setVisibility(View.GONE);
+
+            calenderObject.setVisibility(View.VISIBLE);
+            floatingActionButton.setVisibility(View.GONE);
+            homeText.setVisibility(View.GONE);
 
         } else if (id == R.id.myCharts) {
-            ((CalendarView)findViewById(R.id.calendar)).setVisibility(View.GONE);
-            ((FloatingActionButton)findViewById(R.id.add)).setVisibility(View.GONE);
+
+            calenderObject.setVisibility(View.GONE);
+            floatingActionButton.setVisibility(View.GONE);
+            homeText.setVisibility(View.GONE);
+
+            /* come back to this
             finish();
             startActivity(new Intent(getApplicationContext(), DailyActivity.class));
+            */
 
         } else if (id == R.id.logout) {
-            ((CalendarView)findViewById(R.id.calendar)).setVisibility(View.GONE);
-            ((FloatingActionButton)findViewById(R.id.add)).setVisibility(View.GONE);
+
+//            calenderObject.setVisibility(View.GONE);
+//            floatingActionButton.setVisibility(View.GONE);
+
+            // sign out user and open login activity
             FirebaseAuth.getInstance().signOut();
             finish();
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 
-    public void startQuestions(View view){
+    public void startQuestions(View view) {
         Intent intent = new Intent(this, Questions.class);
         startActivity(intent);
-
     }
 }

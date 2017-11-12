@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // progress bar
     private ProgressDialog progressDialog;
-
+    
     // set up firebase auth
     private FirebaseAuth firebaseAuth;
 
@@ -115,7 +115,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Registered Successfully.", Toast.LENGTH_SHORT).show();;
+                    Toast.makeText(MainActivity.this, "Registered Successfully.", Toast.LENGTH_SHORT).show();
+                    finish();
+                    startActivity(new Intent(getApplicationContext(),LandingMenu.class));
                 } else {
                     // display user registered msg
                     Toast.makeText(MainActivity.this, "Could not register. Please try again.", Toast.LENGTH_SHORT).show();
